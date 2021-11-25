@@ -78,10 +78,12 @@ var viewModel = ViewModel()
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let nameTextField = alert?.textFields![0]
             let infoTextField = alert?.textFields![1]
+            if nameTextField?.text != "" || infoTextField?.text != ""{
             let newNote = Note(context: self.viewModel.getContext())
             newNote.id = UUID().uuidString
             newNote.name = nameTextField?.text
             newNote.info = infoTextField?.text
+            }
             
             do{
                 try self.viewModel.getContext().save()
@@ -94,6 +96,9 @@ var viewModel = ViewModel()
             }
         }))
         self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+        }))
+
       
     }
 }
