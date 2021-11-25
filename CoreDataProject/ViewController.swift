@@ -79,6 +79,7 @@ var viewModel = ViewModel()
             let nameTextField = alert?.textFields![0]
             let infoTextField = alert?.textFields![1]
             let newNote = Note(context: self.viewModel.getContext())
+            newNote.id = UUID().uuidString
             newNote.name = nameTextField?.text
             newNote.info = infoTextField?.text
             
