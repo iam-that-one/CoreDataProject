@@ -29,8 +29,8 @@ class ViewModel{
                 do {
                     let result = try getContext().fetch(request)
                     self.notes = result as! [Note]
-                } catch {
-                    print(error)
+                } catch let error as NSError{
+                    print("something went wrong while fetching data \(error.userInfo)")
                 }
         
     }
