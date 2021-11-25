@@ -20,8 +20,7 @@ class ViewModel{
     func fetchData(){
         let fetchRequest = NSFetchRequest<Note>()
         let entity =
-        NSEntityDescription.entity(forEntityName: "Note",
-                                   in: getContext())!
+        NSEntityDescription.entity(forEntityName: "Note",in: getContext())!
         fetchRequest.entity = entity
         print(notes)
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
