@@ -57,6 +57,7 @@ var viewModel = ViewModel()
             addBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 15),
             addBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             addBtn.leadingAnchor.constraint(equalTo: searchBar.trailingAnchor),
+           
             
             tableView.topAnchor.constraint(equalTo: addBtn.bottomAnchor,constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),

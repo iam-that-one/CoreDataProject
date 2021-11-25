@@ -11,6 +11,7 @@ import CoreData
 
 
 class ViewModel{
+    
    var notes : [Note] = []
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     func getContext() -> NSManagedObjectContext{

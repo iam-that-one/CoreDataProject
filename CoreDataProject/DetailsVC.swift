@@ -10,6 +10,7 @@ import UIKit
 class DetailsVC: UIViewController {
     var info = ""
     
+    
     lazy var infoLable: UILabel = {
         $0.textColor = .brown
         return $0
