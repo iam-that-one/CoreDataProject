@@ -20,7 +20,6 @@ class ViewController: UIViewController{
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setBackgroundImage(UIImage(systemName: "plus.square"), for: .normal)
         $0.addTarget(self, action: #selector(addBtnClick), for: .touchDown)
-        
         return $0
     }(UIButton(type: .system))
     
@@ -52,7 +51,8 @@ class ViewController: UIViewController{
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
-            searchBar.trailingAnchor.constraint(equalTo: addBtn.leadingAnchor,constant: -20),
+           // searchBar.trailingAnchor.constraint(equalTo: addBtn.leadingAnchor,constant: -20),
+            
             
             addBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 15),
             addBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -129,7 +129,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UISearchBa
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterdResult = []
-        
         if searchText == ""{
             filterdResult = viewModel.notes
         }

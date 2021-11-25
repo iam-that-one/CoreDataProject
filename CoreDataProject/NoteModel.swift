@@ -31,9 +31,7 @@ class ViewModel{
         } catch let error as NSError{
             print("something went wrong while fetching data \(error.userInfo)")
         }
-        
     }
-    
 }
 struct NoteModel {
     var id = UUID().uuidString
