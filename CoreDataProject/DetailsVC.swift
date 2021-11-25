@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailsVC: UIViewController {
-    var info = ""
+    var note : Note?
     
     
     lazy var infoLable: UILabel = {
@@ -20,8 +20,7 @@ class DetailsVC: UIViewController {
         view.backgroundColor = .white
         view.addSubview(infoLable)
         // Do any additional setup after loading the view.
-        infoLable.text = info
-        print("my name is \(info)")
+        infoLable.text = note?.info
         infoLable.translatesAutoresizingMaskIntoConstraints = false
         infoLable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         infoLable.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20).isActive = true

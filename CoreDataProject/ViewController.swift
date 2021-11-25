@@ -150,7 +150,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UISearchBa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsController = DetailsVC()
-        detailsController.info = filterdResult[indexPath.row].info!
+        detailsController.note = filterdResult[indexPath.row]
         self.navigationController?.pushViewController(detailsController, animated: true)
     }
 }
