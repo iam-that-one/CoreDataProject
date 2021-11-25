@@ -12,26 +12,26 @@ import CoreData
 
 class ViewModel{
     
-   var notes : [Note] = []
+    var notes : [Note] = []
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     func getContext() -> NSManagedObjectContext{
-    return appDelegate.persistentContainer.viewContext
+        return appDelegate.persistentContainer.viewContext
     }
     func fetchData(){
         let fetchRequest = NSFetchRequest<Note>()
         let entity =
-          NSEntityDescription.entity(forEntityName: "Note",
-                                     in: getContext())!
+        NSEntityDescription.entity(forEntityName: "Note",
+                                   in: getContext())!
         fetchRequest.entity = entity
         print(notes)
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-                request.returnsObjectsAsFaults = false
-                do {
-                    let result = try getContext().fetch(request)
-                    self.notes = result as! [Note]
-                } catch let error as NSError{
-                    print("something went wrong while fetching data \(error.userInfo)")
-                }
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try getContext().fetch(request)
+            self.notes = result as! [Note]
+        } catch let error as NSError{
+            print("something went wrong while fetching data \(error.userInfo)")
+        }
         
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController{
-var viewModel = ViewModel()
+    var viewModel = ViewModel()
     var filterdResult : [Note] = []
     lazy var searchBar : UISearchBar = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ var viewModel = ViewModel()
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setBackgroundImage(UIImage(systemName: "plus.square"), for: .normal)
         $0.addTarget(self, action: #selector(addBtnClick), for: .touchDown)
-
+        
         return $0
     }(UIButton(type: .system))
     
@@ -47,7 +47,7 @@ var viewModel = ViewModel()
         uiSettings()
         filterdResult = viewModel.notes
     }
-   
+    
     func uiSettings(){
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -57,7 +57,7 @@ var viewModel = ViewModel()
             addBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 15),
             addBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             addBtn.leadingAnchor.constraint(equalTo: searchBar.trailingAnchor),
-           
+            
             
             tableView.topAnchor.constraint(equalTo: addBtn.bottomAnchor,constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
@@ -79,10 +79,10 @@ var viewModel = ViewModel()
             let nameTextField = alert?.textFields![0]
             let infoTextField = alert?.textFields![1]
             if nameTextField?.text != "" || infoTextField?.text != ""{
-            let newNote = Note(context: self.viewModel.getContext())
-            newNote.id = UUID().uuidString
-            newNote.name = nameTextField?.text
-            newNote.info = infoTextField?.text
+                let newNote = Note(context: self.viewModel.getContext())
+                newNote.id = UUID().uuidString
+                newNote.name = nameTextField?.text
+                newNote.info = infoTextField?.text
             }
             
             do{
@@ -98,11 +98,8 @@ var viewModel = ViewModel()
         self.present(alert, animated: true, completion: nil)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
         }))
-
-      
     }
 }
-
 extension ViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterdResult.count
@@ -110,9 +107,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UISearchBa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-     
-            cell.textLabel?.text = filterdResult[indexPath.row].name
-      
+        cell.textLabel?.text = filterdResult[indexPath.row].name
         return cell
     }
     
@@ -120,12 +115,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UISearchBa
         let toBeDelete = viewModel.notes[indexPath.row]
         if editingStyle == .delete {
             viewModel.getContext().delete(toBeDelete)
-             do {
-                 try viewModel.getContext().save()
-             } catch let error as NSError {
-                 print("Error While Deleting Note: \(error.userInfo)")
-             }
-         }
+            do {
+                try viewModel.getContext().save()
+            } catch let error as NSError {
+                print("Error While Deleting Note: \(error.userInfo)")
+            }
+        }
         viewModel.fetchData()
         filterdResult = viewModel.notes
         tableView.reloadData()
@@ -139,14 +134,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UISearchBa
             filterdResult = viewModel.notes
         }
         else{
-        for note in viewModel.notes{
-            if note.name!.lowercased().contains(searchText.lowercased()){
-                filterdResult.append(note)
+            for note in viewModel.notes{
+                if note.name!.lowercased().contains(searchText.lowercased()){
+                    filterdResult.append(note)
+                }
             }
         }
-    }
         viewModel.fetchData()
-       tableView.reloadData()
+        tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsController = DetailsVC()
